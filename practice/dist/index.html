@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><link rel="shortcut icon" href=pre/清华LOGO.png type=image/x-icon><script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script><title>俄罗斯方块</title><link rel=stylesheet href=static/loader.css><link href=./static/css/app.004bb1449ad5d3c17ebd582c8a35aa06.css rel=stylesheet></head><body><div id=root><div class=load><div class=loader>加载中...</div></div></div><script type=text/javascript src=./static/js/manifest.91971c577a9806cf16f0.js></script><script type=text/javascript src=./static/js/vendor.25dfe23a6559615dfde0.js></script><script type=text/javascript src=./static/js/app.f4d14c16521ebfe61801.js></script></body><script>function getQueryVariable(variable)
+  {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+      var pair = vars[i].split("=");
+      if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+  }
+
+  function changePage(target, time) {
+    function get_tiao_func(target) {
+      return function tiao(){
+        window.open(target,"_self");
+      }
+    };
+    tiao = get_tiao_func(target);
+    setTimeout( "tiao()",time*1000);
+  };
+
+
+  // if (getQueryVariable('type')==='practice') {
+  //   changePage('../pre/guide-2.html', 3000)
+  // }</script></html>

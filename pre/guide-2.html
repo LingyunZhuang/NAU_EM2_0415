@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="清华LOGO.png" type="image/x-icon">
+
+  <script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script>
+  <link rel="stylesheet" href="guide.css">
+
+  <title>游戏指导语</title>
+</head>
+<body>
+
+
+
+
+
+<div id="main" class="container">
+  <img src="tsinghua_banner_2.png" width="100%">
+    <h2 class="title">正式游戏说明</h2>
+
+    <div class="content">
+      <article>
+      <p><b>接下来是8分钟的正式游戏，请注意以下要求</b>（<em><u>后续问卷题目将考察你是否认真阅读了本游戏说明！</u></em>）：</p>
+      <p>1.系统会<mark>严格控制游戏设置</mark>，游戏内容和难度已固定，你<mark>无法自行选择或调整</mark>任何设置。</p>
+      <p> 2.你<mark>必须按照要求</mark>完成8分钟的游戏，中途暂停或退出将影响实验报酬。</p>
+      <p> 3.实验前请将手机静音且关闭震动，实验全程<mark>请勿看手机</mark>。</p>
+      <p> 4.系统会<mark>全程监控</mark>你的操作，包括按键频率、游戏得分和专注度等。</p>
+      <p><b>请注意，实验报酬按照如下规则发放：</b></p>
+      <p> 1.<mark>基础报酬为13元</mark>，取决于你是否<mark>完全服从任务规则</mark>。只有完全按照标准完成任务，才能获得<b>13元基础报酬</b>。如果未达到要求（如提前退出、长时间不按键等），将影响报酬发放。</p>
+      <p> 2.本任务设置<mark>额外奖励</mark>，<mark>游戏得分</mark>越高，额外奖励越高，<b>最高可达17元</b>。根据前期调研，<mark>半数以上</mark>的参与者可以获得接近<mark>17元的额外奖励</mark>。</p>
+      <p> <b>现在，游戏即将开始，请集中注意力，严格按照实验要求进行。</b></p>
+
+      <br>
+      <p class="hint_word">准备好之后点击按钮进入正式实验</p>
+      <button onclick="clickButton()" id="btn" disabled="disabled">准备好了 (10s)</button>
+    </article>
+  </div>
+
+</div>
+
+<style>
+
+  /* 标题样式 */
+  .title {
+    font-size: 1.8em; /* 根据需要调整字体大小 */
+    text-align: center; /* 标题居中 */
+    margin-bottom: 30px; /* 根据需要调整下边距 */
+    color: black; /* 改为黑色 */
+  }
+
+  /* 内容样式 */
+  .content p {
+    text-align: left; /* 左对齐 */
+    padding-left: 2em; /* 左起空两格，这里使用了em单位，相当于两个字的空间 */
+    margin-bottom: 15px; /* 根据需要调整段落下边距 */
+  }
+
+/* 提示文字样式 */
+.hint_word {
+      font-size: 1.2em; /* 根据需要调整字体大小 */
+      color: #777;        /* 颜色 */
+      text-align: center !important; /* 居中显示，并提高优先级 */
+      margin-top: 20px;   /* 上边距 */
+  }
+
+  /* 按钮样式 */
+  button {
+      display: block; /* 使按钮独占一行 */
+      margin: 30px auto; /* 上下边距，并水平居中 */
+      padding: 12px 25px;
+      font-size: 1.1em;
+      background-color: #27ae60;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      text-align: center; /* 文本居中 */
+  }
+
+  button:hover {
+      background-color: #219653;
+  }
+
+  button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+  }
+</style>
+
+<script>
+
+  // 记录该页面开始的时间
+  let timestamp = (new Date()).valueOf();
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  // 获取练习页面传递过来的参数：速度和分数
+
+  function clickButton() {
+    var condition = getUrlParameter('c')
+    var ext = getUrlParameter('ext')
+    var link = 'guide-2.5.html?' + 'c=' + condition + '&ext=' + ext
+               + '&tchain=' + getUrlParameter('tchain') + '_' + timestamp
+    if (getUrlParameter('dev') === '1') {
+      link = link + '&dev=1'
+    }
+
+    window.location.href=link
+  }
+
+  // 修改目标内容, b和d条件是非具体目标
+  // if (['b','d'].indexOf(getUrlParameter('c'))> -1){
+  //   document.getElementById("goal").innerHTML="请尽量在本次实验的10分钟内发挥你的最佳水平";
+  // }
+
+  //实现按钮倒计时功能
+  let tim=15;
+  if (getUrlParameter('dev') === '1') {
+    tim = 3
+  }
+
+  function aaa(){
+    let btn=document.getElementById("btn");
+    if(tim<=0)
+    {
+      btn.textContent="准备好了";
+      btn.disabled="";
+      btn.style.backgroundColor = "#009ACD"; // 倒计时结束时，将按钮背景颜色改为蓝色
+    }
+    else
+    {
+      btn.textContent="准备好了 ("  +tim+"s)";
+      tim--;
+    }
+  }
+  setInterval("aaa()",1000);
+
+
+
+</script>
+
+
+
+</body>
+</html>
+
+
